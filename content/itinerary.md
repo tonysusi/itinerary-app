@@ -69,31 +69,31 @@ startDate: "2026-06-11"
 
 ## Thu 18 Jun 2026
 
-- **Location:** TBD
+- **Location:** Oregon
 - **Activity:** TBD
 - **Accommodation:** TBD
 
 ## Fri 19 Jun 2026
 
-- **Location:** TBD
+- **Location:** Oregon
 - **Activity:** TBD
 - **Accommodation:** TBD
 
 ## Sat 20 Jun 2026
 
-- **Location:** TBD
+- **Location:** Portland
 - **Activity:** TBD
 - **Accommodation:** TBD
 
 ## Sun 21 Jun 2026
 
-- **Location:** TBD
+- **Location:** Washington
 - **Activity:** TBD
 - **Accommodation:** TBD
 
 ## Mon 22 Jun 2026
 
-- **Location:** Seattle
+- **Location:** Washington
 - **Activity:** TBD
 - **Accommodation:** TBD
 
@@ -105,7 +105,7 @@ startDate: "2026-06-11"
 
 ## Wed 24 Jun 2026
 
-- **Location:** Vancouver
+- **Location:** Seattle
 - **Activity:** TBD
 - **Accommodation:** TBD
 
