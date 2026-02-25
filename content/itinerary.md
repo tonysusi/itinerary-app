@@ -49,197 +49,198 @@ startDate: "2026-06-11"
 - **Activity:** Drive up the PCH
 - **Accommodation:** Campervan - TBD
 
-## Sun 15 Jun 2026
+## Mon 15 Jun 2026
 
 - **Location:** Mountain View
 - **Activity:** Drive up the PCH and Meet up with Dave
 - **Accommodation:** Campervan - Mountain View, CA
 
-## Mon 16 Jun 2026
+## Tue 16 Jun 2026
 
 - **Location:** San Francisco
 - **Activity:** San Fransico
 - **Accommodation:** Campervan - SF
 
-## Tue 17 Jun 2026
+## Wed 17 Jun 2026
 
 - **Location:** San Francisco
 - **Activity:** San Francisco
 - **Accommodation:** Campervan - SF
 
-## Wed 18 Jun 2026
+## Thu 18 Jun 2026
 
 - **Location:** TBD
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Thu 19 Jun 2026
+## Fri 19 Jun 2026
 
 - **Location:** TBD
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Fri 20 Jun 2026
+## Sat 20 Jun 2026
 
 - **Location:** TBD
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Sat 21 Jun 2026
+## Sun 21 Jun 2026
 
 - **Location:** TBD
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Sun 22 Jun 2026
+## Mon 22 Jun 2026
 
 - **Location:** Seattle
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Mon 23 Jun 2026
+## Tue 23 Jun 2026
 
 - **Location:** Seattle
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Tue 24 Jun 2026
+## Wed 24 Jun 2026
 
 - **Location:** Vancouver
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Wed 25 Jun 2026
+## Thu 25 Jun 2026
 
 - **Location:** Vancouver
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Thu 26 Jun 2026
+## Fri 26 Jun 2026
 
 - **Location:** Vancouver
 - **Activity:** TBD
 - **Accommodation:** TBD
 
-## Fri 27 Jun 2026
+## Sat 27 Jun 2026
 
 - **Location:** Vancouver → Toronto → Boston
 - **Activity:** Flights Vancouver → Toronto → Boston
 - **Flight:** Air Canada: YVR 06:15 Vancouver → YYZ 13:50 Toronto; YYZ 16:35 Toronto → BOS 18:22 Boston
-- **Accommodation:** TBD
+- **Accommodation:** Norwood
 
-## Sat 28 Jun 2026
+## Sun 28 Jun 2026
+
+- **Location:** Boston
+- **Activity:** BOS v NYY
+- **Accommodation:** North Falmouth
+
+## Mon 29 Jun 2026
 
 - **Location:** Boston
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** North Falmouth
 
-## Sun 29 Jun 2026
-
-- **Location:** Boston
-- **Activity:** TBD
-- **Accommodation:** TBD
-
-## Mon 30 Jun 2026
+## Tue 30 Jun 2026
 
 - **Location:** Boston
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** North Falmouth
 
-## Tue 01 Jul 2026
-
-- **Location:** Boston
-- **Activity:** TBD
-- **Accommodation:** TBD
-
-## Wed 02 Jul 2026
+## Wed 01 Jul 2026
 
 - **Location:** Boston
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** North Falmouth
 
-## Thu 03 Jul 2026
-
-- **Location:** Boston
-- **Activity:** TBD
-- **Accommodation:** TBD
-
-## Fri 04 Jul 2026
+## Thu 02 Jul 2026
 
 - **Location:** Boston
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** North Falmouth
 
-## Sat 05 Jul 2026
-
-- **Location:** Boston
-- **Activity:** TBD
-- **Accommodation:** TBD
-
-## Sun 06 Jul 2026
+## Fri 03 Jul 2026
 
 - **Location:** Boston
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** North Falmouth
 
-## Mon 07 Jul 2026
-
-- **Location:** Boston
-- **Activity:** TBD
-- **Accommodation:** TBD
-
-## Tue 08 Jul 2026
+## Sat 04 Jul 2026
 
 - **Location:** Boston
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** North Falmouth
 
-## Wed 09 Jul 2026
-
-- **Location:** Boston
-- **Activity:** TBD
-- **Accommodation:** TBD
-
-## Thu 10 Jul 2026
+## Sun 05 Jul 2026
 
 - **Location:** Boston
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** North Falmouth
 
-## Fri 11 Jul 2026
+## Mon 06 Jul 2026
+
+- **Location:** Boston
+- **Activity:** TBD
+- **Accommodation:** North Falmouth
+
+## Tue 07 Jul 2026
+
+- **Location:** Boston
+- **Activity:** TBD
+- **Accommodation:** North Falmouth
+
+## Wed 08 Jul 2026
+
+- **Location:** Boston
+- **Activity:** TBD
+- **Accommodation:** North Falmouth
+
+## Thu 09 Jul 2026
+
+- **Location:** Boston
+- **Activity:** TBD
+- **Accommodation:** North Falmouth
+
+## Fri 10 Jul 2026
+
+- **Location:** Boston
+- **Activity:** TBD
+- **Accommodation:** North Falmouth
+
+## Sat 11 Jul 2026
 
 - **Location:** Los Angeles
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Activity:** Flight from Boston to Los Angeles 
+- **Flight:** Delta: BOS 17:00 -> LAX 20:45
+- **Accommodation:** Anahiem
 
-## Sat 12 Jul 2026
-
-- **Location:** Los Angeles
-- **Activity:** TBD
-- **Accommodation:** TBD
-
-## Sun 13 Jul 2026
+## Sun 12 Jul 2026
 
 - **Location:** Los Angeles
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Activity:** Disneyland
+- **Accommodation:** Anahiem
 
-## Mon 14 Jul 2026
+## Mon 13 Jul 2026
+
+- **Location:** Los Angeles
+- **Activity:** Disneyland
+- **Accommodation:** Airport / Huntington Beach
+
+## Tue 14 Jul 2026
 
 - **Location:** Los Angeles
 - **Activity:** Flight from Los Angeles to Auckland
 - **Flight:** Air New Zealand: LAX 10:10 PM Tue 14 Jul 2026 (Los Angeles) → AKL 6:00 AM Thu 16 Jul 2026 (Auckland)
-- **Accommodation:** TBD
+- **Accommodation:** Airplane
 
-## Tue 15 Jul 2026
+## Wed 15 Jul 2026
 
 - **Location:** In transit (LAX → AKL)
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** Airplane
 
-## Wed 16 Jul 2026
+## Thu 16 Jul 2026
 
 - **Location:** Auckland
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Activity:** Landing
+- **Accommodation:** Hamilton East
 
