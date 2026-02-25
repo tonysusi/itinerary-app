@@ -48,10 +48,7 @@ export default function Home() {
           {itinerary.trip}
         </h1>
         <p className="mb-4 text-slate-600">{itinerary.destination}</p>
-        <TimeDisplay
-          destinationTimezone={itinerary.destinationTimezone}
-          destination={itinerary.destination?.split(",")[0]}
-        />
+        <TimeDisplay />
       </header>
 
       <section className="space-y-6">
