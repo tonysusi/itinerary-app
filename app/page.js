@@ -48,10 +48,7 @@ export default function Home() {
           {itinerary.trip}
         </h1>
         <p className="mb-4 text-slate-600">{itinerary.destination}</p>
-        <TimeDisplay
-          destinationTimezone={itinerary.destinationTimezone}
-          destination={itinerary.destination?.split(",")[0]}
-        />
+        <TimeDisplay />
       </header>
 
       <section className="space-y-6">
@@ -60,7 +57,7 @@ export default function Home() {
             key={day.day}
             className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6"
           >
-            <div className="flex-1 min-w-0">
+            <div className="w-full lg:w-2/3 min-w-0">
               <DayCard
                 day={day}
                 weather={day.weather}
@@ -70,7 +67,9 @@ export default function Home() {
                 location={day.location}
               />
             </div>
-            <MatchesPanel games={day.games} dateLabel={day.dateLabel} />
+            <div className="w-full lg:w-1/3">
+              <MatchesPanel games={day.games} dateLabel={day.dateLabel} />
+            </div>
           </div>
         ))}
       </section>
