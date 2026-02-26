@@ -8,10 +8,10 @@ export default function MatchesPanel({ games, dateLabel }) {
       <div className="mb-4 flex justify-center border-b border-slate-200 pb-3">
         <FIFALogo className="opacity-60 max-h-12 w-auto" />
       </div>
-        <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+        {/* <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
           World Cup Matches
           {dateLabel && <span className="normal-case font-normal text-slate-400"> — {dateLabel}</span>}
-        </h3>
+        </h3> */}
         <p className="text-sm text-slate-400">No matches this day</p>
       </aside>
     );
@@ -22,10 +22,10 @@ export default function MatchesPanel({ games, dateLabel }) {
       <div className="mb-4 flex justify-center border-b border-slate-200 pb-3">
         <FIFALogo className="max-h-12 w-auto" />
       </div>
-      <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
+      {/* <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
         World Cup Matches
         {dateLabel && <span className="normal-case font-normal text-slate-400"> — {dateLabel}</span>}
-      </h3>
+      </h3> */}
       <ul className="space-y-2">
         {games.map((game, i) => (
           <li
