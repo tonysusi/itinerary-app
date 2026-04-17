@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import DayCard from "@/components/DayCard";
 import MatchesPanel from "@/components/MatchesPanel";
 import TimeDisplay from "@/components/TimeDisplay";
+import TripMap from "@/components/TripMap";
 
 export default function Home() {
   const [itinerary, setItinerary] = useState(null);
@@ -50,6 +51,8 @@ export default function Home() {
         <p className="mb-4 text-slate-600">{itinerary.destination}</p>
         <TimeDisplay />
       </header>
+
+      <TripMap />
 
       <section className="space-y-6">
         {itinerary.days.map((day) => (

@@ -40,13 +40,7 @@ export default function TimeDisplay() {
 
   return (
     <div className="flex flex-wrap gap-6 text-sm">
-      <div className="rounded-lg bg-slate-100 px-4 py-3 flex items-center gap-3">
-        <CalendarIcon dayAbbr={nzTime.dayAbbr} date={nzTime.date} />
-        <div>
-          <span className="text-slate-500 block">New Zealand time</span>
-          <p className="font-mono text-lg font-semibold mt-1">{nzTime.time || "—"}</p>
-        </div>
-      </div>
+
       <div className="rounded-lg bg-slate-100 px-4 py-3 flex items-center gap-3">
         <CalendarIcon dayAbbr={pacificTime.dayAbbr} date={pacificTime.date} />
         <div>
@@ -59,6 +53,13 @@ export default function TimeDisplay() {
         <div>
           <span className="text-slate-500 block">Eastern time</span>
           <p className="font-mono text-lg font-semibold mt-1">{easternTime.time || "—"}</p>
+        </div>
+      </div>
+      <div className="rounded-lg bg-slate-100 px-4 py-3 flex items-center gap-3">
+        <CalendarIcon dayAbbr={nzTime.dayAbbr} date={nzTime.date} />
+        <div>
+          <span className="text-slate-500 block">New Zealand time</span>
+          <p className="font-mono text-lg font-semibold mt-1">{nzTime.time || "—"}</p>
         </div>
       </div>
     </div>

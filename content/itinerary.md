@@ -33,79 +33,106 @@ startDate: "2026-06-11"
 ## Fri 12 Jun 2026
 
 - **Location:** PCH / Coastal CA
-- **Activity:** Drive up the PCH
-- **Accommodation:** Campervan - TBD
+- **Activity:** 
+- Morro Bay*2 hrs*
+— walk the Embarcadero, explore Morro Rock, grab lunch on the waterfront
+- Elephant Seal Vista Point, San Simeon *30 min north* (quick stop, the boys will love the seals)
+- Hearst Castle *30 min north* : Grand Rooms tour (~90 min)
+- Limekiln Falls trail (1.2 mi round trip, easy — redwood canyon waterfall to the sea)
+- **Accommodation:**  Limekiln SP - Ocean Camp (sites 1-12) - Premium Campsite - 004
 
 
 ## Sat 13 Jun 2026
 
-- **Location:** PCH / Coastal CA
-- **Activity:** Drive up the PCH
-- **Accommodation:** Campervan - TBD
+- **Location:** Big Sur
+- **Activity:** 
+- Morning swim at Limekiln Beach — rocky cove right at the campground, one of the most scenic spots on the coast 
+- McWay Falls *20 min north* : iconic waterfall-onto-beach view (0.5 mi easy walk)
+- Pfeiffer Beach *10 min north* : purple-tinged sand, sea caves, dramatic rock arch. Boys can explore caves at low tide. Allow 2 hrs
+- Evening stroll into Carmel-by-the-Sea for dinner — only 10 min from the campground
+- **Accommodation:** Saddle Mountain Carmel, 
+27625 Schulte Road, Carmel, CA 93923, United States
 
 ## Sun 14 Jun 2026
 
-- **Location:** PCH / Coastal CA
-- **Activity:** Drive up the PCH
-- **Accommodation:** Campervan - TBD
+- **Location:** Carmel, Monterrey
+- **Activity:** 
+- Morning browse through Carmel-by-the-Sea — coffee, galleries, unique village feel
+- 17-Mile Drive through Pebble Beach *10 min* : Lone Cypress, Bird Rock, seal colony
+- Monterey Bay Aquarium BOOK AHEAD *15 min* : sea otters (allow 2–3 hrs)
+- **Accommodation:** Park outside Dave's
 
 ## Mon 15 Jun 2026
 
-- **Location:** Mountain View
-- **Activity:** Drive up the PCH and Meet up with Dave
-- **Accommodation:** Campervan - Mountain View, CA
+- **Location:** San Fransico
+- **Activity:** 
+Drive up the PCH and Meet up with Dave
+Lot A / Pier 48 or the Mission Bay Boulevard lots.
+Price: $30–$50 (higher if there is an event).
+- **Accommodation:** Meadow camping in Bolinas
 
 ## Tue 16 Jun 2026
 
-- **Location:** San Francisco
-- **Activity:** San Fransico
+- **Location:** Redwoods  Northern California
+- **Activity:** Hikes, beaches
 - **Accommodation:** Campervan - SF
 
 ## Wed 17 Jun 2026
 
-- **Location:** San Francisco
-- **Activity:** San Francisco
+- **Location:** Oregon Coast
+- **Activity:** Hikes, beaches
 - **Accommodation:** Campervan - SF
 
 ## Thu 18 Jun 2026
 
-- **Location:** Oregon
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Location:** Astoria & Portland
+- **Activity:** 
+Astoria — The Goonies house (38th St), Flavel House Museum, Astoria Column
+Fort Stevens State Park — Peter Iredale shipwreck on the beach
+Drive to Portland (~1.5 hrs) — food carts on SW 10th, Powell's Books
+- **Accommodation:** Jantzen Beach RV Park, Portland
 
 ## Fri 19 Jun 2026
 
-- **Location:** Oregon
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Location:** Columbia River Gorge
+- **Activity:** 
+Columbia River Gorge morning — Multnomah Falls (arrive before 9am), Latourell Falls, Crown Point Vista House
+Boring, OR
+~30 min from Gorge
+— quick Gravity Falls selfie at the town sign, stretch the legs
+Drive north to Seattle
+~3 hrs
+— optional Mt St Helens viewpoint detour on the way
+- **Accommodation:** House with family
 
 ## Sat 20 Jun 2026
 
-- **Location:** Portland
+- **Location:** Seattle
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** House with family
 
 ## Sun 21 Jun 2026
 
-- **Location:** Washington
+- **Location:** Seattle
 - **Activity:** TBD
-- **Accommodation:** TBD
+- **Accommodation:** House with family
 
 ## Mon 22 Jun 2026
 
-- **Location:** Washington
-- **Activity:** TBD
+- **Location:** Victoria
+- **Activity:** 
+- Victoria Clipper 8:00
 - **Accommodation:** TBD
 
 ## Tue 23 Jun 2026
 
-- **Location:** Seattle
+- **Location:** Victoria
 - **Activity:** TBD
 - **Accommodation:** TBD
 
 ## Wed 24 Jun 2026
 
-- **Location:** Seattle
+- **Location:** Victoria
 - **Activity:** TBD
 - **Accommodation:** TBD
 
@@ -118,7 +145,7 @@ startDate: "2026-06-11"
 ## Fri 26 Jun 2026
 
 - **Location:** Vancouver
-- **Activity:** TBD
+- **Activity:** NZL vs BEL
 - **Accommodation:** TBD
 
 ## Sat 27 Jun 2026
