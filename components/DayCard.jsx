@@ -42,6 +42,14 @@ function splitItems(value) {
     .filter(Boolean);
 }
 
+function getTransportLabel(items) {
+  const transportText = items.join(" ").toLowerCase();
+  if (transportText.includes("ferr") || transportText.includes("clipper")) {
+    return "⛴️ Ferry / Transport";
+  }
+  return "✈️ Flight / Transport";
+}
+
 function DatePill({ calendarData, dayNumber }) {
   return (
     <div className="flex h-16 w-20 shrink-0 flex-col items-center justify-center rounded-lg bg-stone-100 text-center shadow-sm sm:h-[72px] sm:w-[88px]">
@@ -77,6 +85,7 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
     : splitItems(accommodation);
   const timelineItems = activityItems;
   const title = getDayTitle(day, location, activity, flight);
+  const transportLabel = getTransportLabel(flightItems);
   const subtitleParts = [
     flightItems[0],
     !flightItems.length && firstLine(activity),
@@ -129,7 +138,7 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
 
       {flightItems.length > 0 && flight !== "—" && (
         <aside className="rounded-[18px] border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-6">
-          <p className="text-base font-bold text-slate-950">✈️ Flight / Transport</p>
+          <p className="text-base font-bold text-slate-950">{transportLabel}</p>
           <p className="mt-1 text-sm leading-relaxed text-slate-700">
             {flightItems.join(" · ")}
           </p>
