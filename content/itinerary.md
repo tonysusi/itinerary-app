@@ -25,134 +25,195 @@ startDate: "2026-06-11"
 ## Thu 11 Jun 2026
 
 - **Location:** Camarillo
-- **Activity:** Flight from Auckland to Los Angeles
-- **Flight:** AKL 8:15 PM (Auckland) → LAX 1:20 PM (Los Angeles) Thu 11 Jun 2026
-- **Accommodation:** Sergio's house, Camarillo, Ca ,USA
-- **Activity:** bring up the van from Roadsurfer
+- **Activity:**
+- Depart Auckland (AKL) 8:15pm on Air New Zealand
+- Arrive Los Angeles (LAX) 1:20pm Thu Jun 11
+- Clear customs & immigration at LAX — allow 1–1.5 hrs
+- Lyft or Uber to Roadsurfer — ~10–15 min — arrive ~5:00pm confirmed
+- Pick up campervan — van orientation, load up gear
+- Drive to Camarillo — ~45 min north — settle in, easy first evening
+- Dinner in Camarillo — early night ahead of 7:30am departure
+- **Flight:** Air New Zealand: AKL 20:15 → LAX 13:20 Thu Jun 11 · Auckland → Los Angeles
+- **Accommodation:** Arrive Camarillo ~6:30–7:00pm. Early night — big Day 1 starts at 7:30am tomorrow.
 
 ## Fri 12 Jun 2026
 
-- **Location:** PCH / Coastal CA
-- **Activity:** 
-- Morro Bay*2 hrs*
-— walk the Embarcadero, explore Morro Rock, grab lunch on the waterfront
-- Elephant Seal Vista Point, San Simeon *30 min north* (quick stop, the boys will love the seals)
-- Hearst Castle *30 min north* : Grand Rooms tour (~90 min)
-- Limekiln Falls trail (1.2 mi round trip, easy — redwood canyon waterfall to the sea)
-- **Accommodation:**  Limekiln SP - Ocean Camp (sites 1-12) - Premium Campsite - 004
+- **Location:** Camarillo → Morro Bay → Hearst Castle → Limekiln
+- **Activity:**
+- Depart Camarillo by 7:30am
+- Morro Bay — ~2 hrs — Embarcadero, Morro Rock, lunch
+- Elephant Seal Vista Point, San Simeon — ~30 min north
+- Hearst Castle — BOOK AHEAD — ~30 min north — Grand Rooms tour (~90 min)
+- Limekiln State Park — ~1 hr north — Limekiln Falls trail (1.2 mi round trip)
+- **Accommodation:** ✓ Accommodation booked: Limekiln State Park
 
 
 ## Sat 13 Jun 2026
 
-- **Location:** Big Sur
-- **Activity:** 
-- Morning swim at Limekiln Beach — rocky cove right at the campground, one of the most scenic spots on the coast 
-- McWay Falls *20 min north* : iconic waterfall-onto-beach view (0.5 mi easy walk)
-- Pfeiffer Beach *10 min north* : purple-tinged sand, sea caves, dramatic rock arch. Boys can explore caves at low tide. Allow 2 hrs
-- Evening stroll into Carmel-by-the-Sea for dinner — only 10 min from the campground
-- **Accommodation:** Saddle Mountain Carmel, 
-27625 Schulte Road, Carmel, CA 93923, United States
+- **Location:** Limekiln → Big Sur → Saddle Mountain Carmel
+- **Activity:**
+- Morning swim at Limekiln Beach
+- McWay Falls — ~20 min north
+- Pfeiffer Beach — ~10 min north — purple sand, sea caves, rock arch
+- Drive to Saddle Mountain Carmel — ~1.5 hrs
+- Evening dinner in Carmel-by-the-Sea
+- **Accommodation:** ✓ Accommodation booked: Saddle Mountain Carmel
 
 ## Sun 14 Jun 2026
 
-- **Location:** Carmel, Monterrey
-- **Activity:** 
-- Morning browse through Carmel-by-the-Sea — coffee, galleries, unique village feel
-- 17-Mile Drive through Pebble Beach *10 min* : Lone Cypress, Bird Rock, seal colony
-- Monterey Bay Aquarium BOOK AHEAD *15 min* : sea otters (allow 2–3 hrs)
-- **Accommodation:** Park outside Dave's
+- **Location:** Carmel → 17-Mile Drive → Monterey → Mountain View
+- **Activity:**
+- Morning browse through Carmel-by-the-Sea
+- 17-Mile Drive — Lone Cypress, Bird Rock, seal colony
+- Monterey Bay Aquarium — BOOK AHEAD — sea otters (allow 2–3 hrs)
+- Drive to Mountain View — ~1.5 hrs
+- Dinner with your friend
+- **Accommodation:** Staying at: 254 Carmelita Drive, Mountain View · Friend's house · Park campervan on street overnight
 
 ## Mon 15 Jun 2026
 
-- **Location:** San Fransico
-- **Activity:** 
-Drive up the PCH and Meet up with Dave
-Lot A / Pier 48 or the Mission Bay Boulevard lots.
-Price: $30–$50 (higher if there is an event).
-- **Accommodation:** Meadow camping in Bolinas
+- **Location:** San Francisco → Bolinas meadow camp
+- **Activity:**
+- Park van at Oracle Park Lot A / Pier 48 or Mission Bay Blvd — $30–$50
+- Fisherman's Wharf → Pier 39 sea lions → crab bread bowls
+- Alcatraz Island ferry + audio tour — BOOK AHEAD
+- Chinatown — Dragon's Gate, Ross Alley, bubble tea
+- Golden Gate Bridge sunset walk or cycle
+- Drive van to Bolinas — ~1 hr north — meadow campsite
+- Check Oracle Park events — parking rises to $50+ on game days.
+- **Accommodation:** Sleeping: Meadow camping Bolinas — Hipcamp · Confirm campervan size restrictions
 
 ## Tue 16 Jun 2026
 
-- **Location:** Redwoods  Northern California
-- **Activity:** Hikes, beaches
-- **Accommodation:** Campervan - SF
+- **Location:** Bolinas → Point Reyes → Redwoods → Crescent City
+- **Activity:**
+- Morning walk on Bolinas Beach
+- Point Reyes National Seashore — ~15 min — Limantour Beach or Tomales Point
+- Hwy 101 north — Avenue of the Giants redwood detour
+- Prairie Creek Redwoods — Fern Canyon hike (easy 1 hr loop)
+- Arrive Crescent City — walk South Beach from the campsite, watch the harbour sunset
+- **Accommodation:** ✓ Accommodation booked: Redwood Harbor Village · 159 Starfish Way, Crescent City, CA · Back-in full hookup site · 30A/50A electric, water & sewer · Direct access to South Beach
 
 ## Wed 17 Jun 2026
 
-- **Location:** Oregon Coast
-- **Activity:** Hikes, beaches
-- **Accommodation:** Campervan - SF
+- **Location:** Jedediah Smith → Oregon Vortex → Beverly Beach
+- **Activity:**
+- Morning: Jedediah Smith Redwoods — Stout Grove trail (easy 1.5 mi loop, stunning old-growth, 5 min from campsite)
+- Oregon Vortex, Gold Hill — BOOK AHEAD — ~1.5 hrs north — Gravity Falls fans will love it
+- Continue north — Cannon Beach quick stop for Haystack Rock — ~2 hrs north
+- Arrive Beverly Beach State Park — ~1.5 hrs south of Cannon Beach — check in, explore the beach
+- Surf or body surf at Beverly Beach — miles of wild Oregon coast right on your doorstep
+- Beverly Beach has 53 full-hookup sites with electric, water & sewer — well suited for the campervan. The beach is a short walkway under the highway bridge from the campground.
+- **Accommodation:** ✓ Accommodation booked: Beverly Beach State Park, OR · 7 miles north of Newport · Full hookup RV site · Hot showers, dump station · Book at oregonstateparks.reserveamerica.com
 
 ## Thu 18 Jun 2026
 
-- **Location:** Astoria & Portland
-- **Activity:** 
-Astoria — The Goonies house (38th St), Flavel House Museum, Astoria Column
-Fort Stevens State Park — Peter Iredale shipwreck on the beach
-Drive to Portland (~1.5 hrs) — food carts on SW 10th, Powell's Books
-- **Accommodation:** Jantzen Beach RV Park, Portland
+- **Location:** Astoria + Goonies → Portland
+- **Activity:**
+- Astoria — ~2 hrs north — Goonies house (38th St), Flavel House Museum, Astoria Column
+- Fort Stevens State Park — Peter Iredale shipwreck on the beach
+- Drive to Portland — ~1.5 hrs — food carts SW 10th, Powell's Books
+- **Accommodation:** ✓ Accommodation booked: Jantzen Beach RV Park — last night in the campervan
 
 ## Fri 19 Jun 2026
 
-- **Location:** Columbia River Gorge
-- **Activity:** 
-Columbia River Gorge morning — Multnomah Falls (arrive before 9am), Latourell Falls, Crown Point Vista House
-Boring, OR
-~30 min from Gorge
-— quick Gravity Falls selfie at the town sign, stretch the legs
-Drive north to Seattle
-~3 hrs
-— optional Mt St Helens viewpoint detour on the way
-- **Accommodation:** House with family
+- **Location:** Columbia River Gorge → Boring, OR → Seattle
+- **Activity:**
+- Columbia River Gorge — Multnomah Falls (before 9am), Latourell Falls, Crown Point
+- Boring, OR — ~30 min — Gravity Falls selfie
+- Drive to Seattle — ~3 hrs — optional Mt St Helens detour
+- Arrive Seattle evening — check in, Pike Place for dinner
+- **Accommodation:** Seattle accommodation — BOOK AHEAD for Jun 19–21.
 
 ## Sat 20 Jun 2026
 
-- **Location:** Seattle
-- **Activity:** TBD
-- **Accommodation:** House with family
+- **Location:** Campervan drop-off → Full Seattle day
+- **Activity:**
+- Drop off campervan 9:00–10:00am — Roadsurfer, 3820 6th Ave S, Seattle
+- Pike Place Market — donuts, original Starbucks
+- Museum of Pop Culture (MoPOP) — Nirvana, Jimi Hendrix, video games
+- Chihuly Garden and Glass
+- Alki Beach — waterfront walk with skyline views
+- **Accommodation:** ✓ Campervan drop-off: Roadsurfer · 3820 6th Ave S, Seattle · Jun 20, 9:00–10:00am
 
 ## Sun 21 Jun 2026
 
-- **Location:** Seattle
-- **Activity:** TBD
-- **Accommodation:** House with family
+- **Location:** Seattle — final full day
+- **Activity:**
+- Space Needle — best views on a clear day
+- Discovery Park — lighthouse walk, beach, 534 acres
+- Fremont neighbourhood — Fremont Troll, Sunday market
+- Capitol Hill for dinner
+- Early night — at Pier 69 by 7:15am tomorrow
+- **Accommodation:** Early night — Clipper 8am tomorrow
 
 ## Mon 22 Jun 2026
 
-- **Location:** Victoria
-- **Activity:** 
-- Victoria Clipper 8:00
-- **Accommodation:** TBD
+- **Location:** Seattle → Victoria by Clipper
+- **Activity:**
+- Pier 69 (2701 Alaskan Way) by 7:15am — Victoria Clipper departs 8:00am
+- Arrive Victoria Inner Harbour ~11:00am — check in
+- Inner Harbour — Empress Hotel, BC Parliament Buildings, buskers
+- Fisherman's Wharf — floating food stalls, harbour seals
+- Chinatown — Fan Tan Alley
+- **Flight:** Victoria Clipper booked: Mon Jun 22 · 8:00am · Pier 69 Seattle → Victoria Inner Harbour
+- **Accommodation:** Victoria accommodation — BOOK AHEAD for Jun 22–24.
 
 ## Tue 23 Jun 2026
 
-- **Location:** Victoria
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Location:** Victoria — bike day + Butchart Gardens
+- **Activity:**
+- Pick up bikes — The Pedaler (downtown) or Cycle BC (harbourside)
+- Cycle Inner Harbour seawall → Chinatown → Beacon Hill Park
+- Galloping Goose Trail or Seaside Touring Route — car-free, ocean views
+- Butchart Gardens — ~20 min by taxi — BOOK AHEAD
+- Government Street evening — dinner and ice cream
+- **Accommodation:** 🚲 The Pedaler — pedal bikes $27/2hrs, e-bikes $47/2hrs · Cycle BC — 60+ bikes, helmets & locks included · Ruhza — from $20/day · E-bike riders must be 16+ in BC
 
 ## Wed 24 Jun 2026
 
-- **Location:** Victoria
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Location:** Victoria — coastal hike + final evening
+- **Activity:**
+- Goldstream Provincial Park — old-growth forest waterfall trail
+- Optional: bikes at East Sooke Regional Park
+- Royal BC Museum or The Bug Zoo
+- Dallas Road waterfront walk — seals and eagles
+- Final Victoria dinner — Bard and Banker or Red Fish Blue Fish
+- **Accommodation:** Pack up tonight — BC Ferries to Vancouver tomorrow. Book at bcferries.com.
 
 ## Thu 25 Jun 2026
 
-- **Location:** Vancouver
-- **Activity:** TBD
-- **Accommodation:** TBD
+- **Location:** Victoria → Vancouver by BC Ferries
+- **Activity:**
+- Taxi to Swartz Bay Terminal — ~30 min — BOOK AHEAD
+- BC Ferries → Tsawwassen — Gulf Islands crossing (~1.5 hrs)
+- Transit or taxi to Vancouver (~45 min) — check into accommodation
+- Stanley Park evening walk
+- Dinner in Gastown
+- **Flight:** BC Ferries — still to book: Swartz Bay → Tsawwassen · Multiple sailings daily · ~1.5 hrs · bcferries.com
+- **Accommodation:** Vancouver accommodation — BOOK AHEAD for Jun 25–26.
 
 ## Fri 26 Jun 2026
 
-- **Location:** Vancouver
-- **Activity:** NZL vs BEL
-- **Accommodation:** TBD
+- **Location:** Vancouver + FIFA World Cup: NZ vs Belgium 🏆
+- **Activity:**
+- Stanley Park morning — seawall cycle, totem poles
+- Granville Island Public Market — lunch, buskers
+- Gastown + Chinatown afternoon walk
+- Head to BC Place — arrive early, World Cup atmosphere
+- 🇳🇿 New Zealand vs Belgium 🇧🇪 — Group G · Kickoff 8:00pm local
+- **Accommodation:** Early night after the match — at YVR by 4:00am. Book taxi or Canada Line SkyTrain.
 
 ## Sat 27 Jun 2026
 
-- **Location:** Vancouver → Toronto → Boston
-- **Activity:** Flights Vancouver → Toronto → Boston
-- **Flight:** Air Canada: YVR 06:15 Vancouver → YYZ 13:50 Toronto; YYZ 16:35 Toronto → BOS 18:22 Boston
+- **Location:** Fly home: Vancouver → Toronto → Boston ✈️
+- **Activity:**
+- At YVR by 4:00am — Air Canada check-in
+- AC: YVR 06:15 → YYZ 13:50 · Vancouver → Toronto
+- Layover at Toronto Pearson — 2 hrs 45 min
+- AC: YYZ 16:35 → BOS 18:22 · Toronto → Boston
+- Arrive Boston 6:22pm — end of an epic trip! 🎉
+- **Flight:** Air Canada — Sat Jun 27: YVR 06:15 → YYZ 13:50 · Vancouver → Toronto; YYZ 16:35 → BOS 18:22 · Toronto → Boston
 - **Accommodation:** Norwood
 
 ## Sun 28 Jun 2026

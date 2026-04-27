@@ -5,20 +5,43 @@ import { useEffect, useState } from "react";
 /**
  * Trip Map Component using OpenStreetMap via Leaflet
  * Shows routes:
- * 1. Road route: LA to Seattle (via coast)
+ * 1. Road/ferry route: LAX to Vancouver (via coast and Victoria)
  * 2. Flight: Vancouver to Toronto to Boston
- * 3. Flight: Boston to LA
+ * 3. Flight: Boston to LAX
  */
 
-// City coordinates [lat, lng]
-const CITIES = {
-  LA: { coords: [34.0522, -118.2437], label: "Los Angeles" },
-  SF: { coords: [37.7749, -122.4194], label: "San Francisco" },
-  Seattle: { coords: [47.6062, -122.3321], label: "Seattle" },
-  Vancouver: { coords: [49.2827, -123.1207], label: "Vancouver" },
-  Toronto: { coords: [43.6532, -79.3832], label: "Toronto" },
-  Boston: { coords: [42.3601, -71.0589], label: "Boston" },
-};
+// Ordered stop coordinates [lat, lng]
+const STOPS = [
+  { id: "lax-start", coords: [33.9416, -118.4085], label: "LAX" },
+  { id: "camarillo", coords: [34.2164, -119.0376], label: "Camarillo, CA" },
+  { id: "morro-bay", coords: [35.3658, -120.8499], label: "Morro Bay, CA" },
+  { id: "san-simeon", coords: [35.6439, -121.1893], label: "San Simeon, CA" },
+  { id: "limekiln", coords: [36.0144, -121.5177], label: "Limekiln State Park, CA" },
+  { id: "pfeiffer-beach", coords: [36.2381, -121.8158], label: "Pfeiffer Beach, CA" },
+  { id: "carmel", coords: [36.5552, -121.9233], label: "Carmel-by-the-Sea, CA" },
+  { id: "saddle-mountain", coords: [36.5394, -121.8789], label: "Saddle Mountain, Carmel-by-the-Sea, CA" },
+  { id: "monterey", coords: [36.6002, -121.8947], label: "Monterey, CA" },
+  { id: "mountain-view", coords: [37.3861, -122.0839], label: "Mountain View, CA" },
+  { id: "san-francisco", coords: [37.7749, -122.4194], label: "San Francisco, CA" },
+  { id: "bolinas", coords: [37.9094, -122.6864], label: "Bolinas, CA" },
+  { id: "point-reyes", coords: [38.0834, -122.8350], label: "Point Reyes National Seashore, CA" },
+  { id: "prairie-creek", coords: [41.3636, -124.0235], label: "Prairie Creek Redwoods, CA" },
+  { id: "crescent-city", coords: [41.7558, -124.2026], label: "Crescent City, CA" },
+  { id: "gold-hill", coords: [42.4318, -123.0506], label: "Gold Hill, OR" },
+  { id: "reedsport", coords: [43.3286, -124.1112], label: "Reedsport, OR" },
+  { id: "newport", coords: [44.6368, -124.0535], label: "Newport, OR" },
+  { id: "beverly-beach", coords: [44.7304, -124.0587], label: "Beverly Beach, OR" },
+  { id: "cannon-beach", coords: [45.8918, -123.9615], label: "Cannon Beach, OR" },
+  { id: "astoria", coords: [46.1879, -123.8313], label: "Astoria, OR" },
+  { id: "portland", coords: [45.5152, -122.6784], label: "Portland, OR" },
+  { id: "boring", coords: [45.4301, -122.3745], label: "Boring, OR" },
+  { id: "seattle", coords: [47.6062, -122.3321], label: "Seattle, WA" },
+  { id: "victoria", coords: [48.4284, -123.3656], label: "Victoria, BC" },
+  { id: "vancouver", coords: [49.2827, -123.1207], label: "Vancouver, BC" },
+  { id: "toronto", coords: [43.6532, -79.3832], label: "Toronto, ON" },
+  { id: "boston", coords: [42.3601, -71.0589], label: "Boston, MA" },
+  { id: "lax-return", coords: [33.9416, -118.4085], label: "LAX" },
+];
 
 // Map bounds to show full USA/Canada
 const MAP_BOUNDS = [
@@ -48,7 +71,7 @@ function MapContent() {
 
   if (!leafletLoaded || !L || !ReactLeaflet) {
     return (
-      <div className="flex items-center justify-center h-[400px] bg-slate-100 rounded-lg">
+      <div className="flex h-[420px] items-center justify-center rounded-2xl bg-stone-100">
         <p className="text-slate-500">Loading map...</p>
       </div>
     );
@@ -56,20 +79,10 @@ function MapContent() {
 
   const { MapContainer, TileLayer, Polyline, CircleMarker, Tooltip } = ReactLeaflet;
 
-  // Road route coordinates (LA → SF → Seattle along coast)
-  const roadRoute = [
-    CITIES.LA.coords,
-    [34.4208, -119.6982], // Santa Barbara
-    [35.2828, -120.6596], // San Luis Obispo
-    [36.6002, -121.8947], // Monterey
-    CITIES.SF.coords,
-    [38.4404, -122.7141], // Santa Rosa
-    [40.7990, -124.1636], // Eureka
-    [42.3265, -122.8756], // Medford
-    [44.0521, -123.0868], // Eugene
-    [45.5051, -122.6750], // Portland
-    CITIES.Seattle.coords,
-  ];
+  const stopsById = Object.fromEntries(STOPS.map((stop) => [stop.id, stop]));
+
+  // Road/ferry route coordinates (LAX → Vancouver via coast and Victoria)
+  const coastalRoute = STOPS.slice(0, 25).map((stop) => stop.coords);
 
   // Generate smooth arc points between two coordinates
   const generateArc = (start, end, numPoints = 20, arcHeight = 0.15) => {
@@ -87,38 +100,28 @@ function MapContent() {
 
   // Flight route Vancouver → Toronto → Boston with smooth arcs
   const flightVancouverBoston = [
-    ...generateArc(CITIES.Vancouver.coords, CITIES.Toronto.coords, 25, 0.12),
-    ...generateArc(CITIES.Toronto.coords, CITIES.Boston.coords, 15, 0.08),
+    ...generateArc(stopsById.vancouver.coords, stopsById.toronto.coords, 25, 0.12),
+    ...generateArc(stopsById.toronto.coords, stopsById.boston.coords, 15, 0.08),
   ];
 
-  const flightBostonLA = generateArc(CITIES.Boston.coords, CITIES.LA.coords, 30, 0.10);
-
-  // Custom icon for markers
-  const createIcon = () => {
-    return L.divIcon({
-      className: "custom-marker",
-      html: '<div style="width: 12px; height: 12px; background: white; border: 2px solid #1F2937; border-radius: 50%;"></div>',
-      iconSize: [12, 12],
-      iconAnchor: [6, 6],
-    });
-  };
+  const flightBostonLax = generateArc(stopsById.boston.coords, stopsById["lax-return"].coords, 30, 0.10);
 
   return (
     <MapContainer
       center={MAP_CENTER}
       zoom={4}
-      style={{ height: "400px", width: "100%" }}
+      style={{ height: "420px", width: "100%" }}
       scrollWheelZoom={false}
-      className="rounded-lg z-0"
+      className="z-0 rounded-2xl"
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      {/* Road route - LA to Seattle (blue dashed) */}
+      {/* Road/ferry route - LAX to Vancouver (blue dashed) */}
       <Polyline
-        positions={roadRoute}
+        positions={coastalRoute}
         pathOptions={{
           color: "#3B82F6",
           weight: 4,
@@ -137,9 +140,9 @@ function MapContent() {
         }}
       />
 
-      {/* Flight route - Boston to LA (orange) */}
+      {/* Flight route - Boston to LAX (orange) */}
       <Polyline
-        positions={flightBostonLA}
+        positions={flightBostonLax}
         pathOptions={{
           color: "#F59E0B",
           weight: 3,
@@ -147,21 +150,21 @@ function MapContent() {
         }}
       />
 
-      {/* City markers */}
-      {Object.entries(CITIES).map(([key, city]) => (
+      {/* Stop markers */}
+      {STOPS.slice(0, -1).map((stop, index) => (
         <CircleMarker
-          key={key}
-          center={city.coords}
-          radius={8}
+          key={stop.id}
+          center={stop.coords}
+          radius={index === 0 ? 8 : 5}
           pathOptions={{
             color: "#1F2937",
-            weight: 2,
+            weight: index === 0 ? 2 : 1.5,
             fillColor: "white",
             fillOpacity: 1,
           }}
         >
-          <Tooltip permanent direction="top" offset={[0, -10]} className="city-label">
-            {city.label}
+          <Tooltip direction="top" offset={[0, -10]} className="city-label">
+            {index + 1}. {stop.label}
           </Tooltip>
         </CircleMarker>
       ))}
@@ -171,20 +174,20 @@ function MapContent() {
 
 function Legend() {
   return (
-    <div className="absolute bottom-4 right-4 bg-white/95 rounded-lg shadow-md p-3 z-[1000]">
-      <p className="text-xs font-semibold text-slate-700 mb-2">Routes</p>
-      <div className="space-y-1.5">
+    <div className="absolute bottom-4 right-4 z-[1000] rounded-2xl border border-stone-200 bg-white/95 p-3 shadow-md backdrop-blur">
+      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Routes</p>
+      <div className="space-y-2">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-0.5 bg-blue-500" style={{ backgroundImage: "repeating-linear-gradient(90deg, #3B82F6 0, #3B82F6 6px, transparent 6px, transparent 10px)" }}></div>
-          <span className="text-xs text-slate-600">LA → Seattle (road)</span>
+          <div className="h-0.5 w-6 bg-blue-500" style={{ backgroundImage: "repeating-linear-gradient(90deg, #3B82F6 0, #3B82F6 6px, transparent 6px, transparent 10px)" }}></div>
+          <span className="text-xs text-slate-600">LAX → Vancouver</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-0.5 bg-emerald-500"></div>
+          <div className="h-0.5 w-6 bg-emerald-500"></div>
           <span className="text-xs text-slate-600">VAN → YYZ → BOS</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-0.5 bg-amber-500"></div>
-          <span className="text-xs text-slate-600">BOS → LA (return)</span>
+          <div className="h-0.5 w-6 bg-amber-500"></div>
+          <span className="text-xs text-slate-600">BOS → LAX (return)</span>
         </div>
       </div>
     </div>
@@ -193,9 +196,24 @@ function Legend() {
 
 export default function TripMap() {
   return (
-    <div className="mb-8 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-      <h2 className="mb-4 text-lg font-semibold text-slate-800">Trip Route</h2>
-      <div className="relative">
+    <div className="mb-8 rounded-[18px] border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
+      <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div className="flex h-16 w-20 shrink-0 flex-col items-center justify-center rounded-lg bg-stone-100 text-center shadow-sm sm:h-[72px] sm:w-[88px]">
+          <span className="text-sm font-medium leading-none text-slate-600">Route</span>
+          <span className="mt-1 text-xl font-bold leading-none text-slate-950">
+            {STOPS.length - 1}
+          </span>
+        </div>
+        <div>
+          <h2 className="text-xl font-bold leading-snug text-slate-950 sm:text-2xl">
+            West Coast → Canada → East Coast → LAX
+          </h2>
+          <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
+            Campervan coast route, Canada leg, and cross-country flights
+          </p>
+        </div>
+      </div>
+      <div className="relative overflow-hidden rounded-2xl border border-stone-200 bg-stone-100">
         <MapContent />
         <Legend />
       </div>
