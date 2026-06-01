@@ -1,7 +1,7 @@
 # Itinerary App
 
-A Next.js + React app that displays your trip itinerary from a markdown file. Shows local time, destination time, mock weather, daily activities, flight details, and accommodation for each day.
-
+A Next.js + React app that displays your trip itinerary from a markdown file. Shnows local time, destination time, mock weather, daily activities, flight details, and accommodation for each day.
+Ω
 ## Setup
 
 ```bash
