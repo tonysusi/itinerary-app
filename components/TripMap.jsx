@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
- * Trip Map Component using OpenStreetMap via Leaflet
- * Shows routes:
- * 1. Road/ferry route: LAX to Vancouver (via coast and Victoria)
- * 2. Flight: Vancouver to Toronto to Boston
- * 3. Flight: Boston to LAX
+ * Trip Map using MapLibre GL with vector tiles.
+ * Bearing is set to 90° so west is at the top; labels stay upright.
  */
+
+const MAP_HEIGHT = 420;
+const MAP_BEARING = 90;
+const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 
 // Ordered stop coordinates [lat, lng]
 const STOPS = [
@@ -36,159 +37,192 @@ const STOPS = [
   { id: "portland", coords: [45.5152, -122.6784], label: "Portland, OR" },
   { id: "boring", coords: [45.4301, -122.3745], label: "Boring, OR" },
   { id: "seattle", coords: [47.6062, -122.3321], label: "Seattle, WA" },
-  { id: "victoria", coords: [48.4284, -123.3656], label: "Victoria, BC" },
-  { id: "vancouver", coords: [49.2827, -123.1207], label: "Vancouver, BC" },
-  { id: "toronto", coords: [43.6532, -79.3832], label: "Toronto, ON" },
-  { id: "boston", coords: [42.3601, -71.0589], label: "Boston, MA" },
-  { id: "lax-return", coords: [33.9416, -118.4085], label: "LAX" },
 ];
 
-// Map bounds to show full USA/Canada
-const MAP_BOUNDS = [
-  [25, -130], // Southwest
-  [55, -60],  // Northeast
-];
+const routeGeoJson = {
+  type: "Feature",
+  properties: {},
+  geometry: {
+    type: "LineString",
+    coordinates: STOPS.map((stop) => [stop.coords[1], stop.coords[0]]),
+  },
+};
 
-const MAP_CENTER = [40, -98];
+const stopsGeoJson = {
+  type: "FeatureCollection",
+  features: STOPS.map((stop, index) => ({
+    type: "Feature",
+    properties: {
+      id: stop.id,
+      label: stop.label,
+      index: index + 1,
+      isEndpoint: index === 0 || index === STOPS.length - 1,
+    },
+    geometry: {
+      type: "Point",
+      coordinates: [stop.coords[1], stop.coords[0]],
+    },
+  })),
+};
 
 function MapContent() {
-  const [leafletLoaded, setLeafletLoaded] = useState(false);
-  const [L, setL] = useState(null);
-  const [ReactLeaflet, setReactLeaflet] = useState(null);
+  const containerRef = useRef(null);
+  const mapRef = useRef(null);
+  const [mapReady, setMapReady] = useState(false);
+  const [mapError, setMapError] = useState(null);
 
   useEffect(() => {
-    // Dynamically import Leaflet and react-leaflet on client side
-    Promise.all([
-      import("leaflet"),
-      import("react-leaflet"),
-      import("leaflet/dist/leaflet.css"),
-    ]).then(([leaflet, reactLeaflet]) => {
-      setL(leaflet.default);
-      setReactLeaflet(reactLeaflet);
-      setLeafletLoaded(true);
-    });
+    if (!containerRef.current || mapRef.current) return;
+
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const maplibregl = (await import("maplibre-gl")).default;
+        await import("maplibre-gl/dist/maplibre-gl.css");
+
+        if (cancelled || !containerRef.current) return;
+
+        const map = new maplibregl.Map({
+          container: containerRef.current,
+          style: MAP_STYLE,
+          bearing: MAP_BEARING,
+          pitch: 0,
+          scrollZoom: false,
+          attributionControl: false,
+        });
+
+        mapRef.current = map;
+
+        map.addControl(
+          new maplibregl.AttributionControl({ compact: true }),
+          "bottom-left"
+        );
+        map.addControl(new maplibregl.NavigationControl({ showCompass: true }), "top-right");
+
+        map.on("load", () => {
+          if (cancelled) return;
+
+          map.addSource("route", { type: "geojson", data: routeGeoJson });
+          map.addLayer({
+            id: "route-line",
+            type: "line",
+            source: "route",
+            paint: {
+              "line-color": "#3B82F6",
+              "line-width": 4,
+              "line-opacity": 0.8,
+              "line-dasharray": [2, 1.5],
+            },
+          });
+
+          map.addSource("stops", { type: "geojson", data: stopsGeoJson });
+          map.addLayer({
+            id: "stops-circles",
+            type: "circle",
+            source: "stops",
+            paint: {
+              "circle-color": "#FFFFFF",
+              "circle-stroke-color": "#1F2937",
+              "circle-stroke-width": [
+                "case",
+                ["boolean", ["get", "isEndpoint"], false],
+                2,
+                1.5,
+              ],
+              "circle-radius": [
+                "case",
+                ["boolean", ["get", "isEndpoint"], false],
+                8,
+                5,
+              ],
+            },
+          });
+
+          const bounds = new maplibregl.LngLatBounds();
+          STOPS.forEach((stop) => bounds.extend([stop.coords[1], stop.coords[0]]));
+          map.fitBounds(bounds, { padding: 40, bearing: MAP_BEARING, maxZoom: 8 });
+
+          const popup = new maplibregl.Popup({
+            closeButton: false,
+            closeOnClick: false,
+            className: "trip-map-popup",
+          });
+
+          map.on("mouseenter", "stops-circles", (event) => {
+            map.getCanvas().style.cursor = "pointer";
+            const feature = event.features?.[0];
+            if (!feature) return;
+
+            popup
+              .setLngLat(feature.geometry.coordinates)
+              .setHTML(`${feature.properties.index}. ${feature.properties.label}`)
+              .addTo(map);
+          });
+
+          map.on("mouseleave", "stops-circles", () => {
+            map.getCanvas().style.cursor = "";
+            popup.remove();
+          });
+
+          setMapReady(true);
+        });
+
+        map.on("error", (event) => {
+          if (event?.error?.message) {
+            setMapError(event.error.message);
+          }
+        });
+      } catch (error) {
+        if (!cancelled) {
+          setMapError(error instanceof Error ? error.message : "Failed to load map");
+        }
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+      mapRef.current?.remove();
+      mapRef.current = null;
+    };
   }, []);
 
-  if (!leafletLoaded || !L || !ReactLeaflet) {
+  if (mapError) {
     return (
-      <div className="flex h-[420px] items-center justify-center rounded-2xl bg-stone-100">
-        <p className="text-slate-500">Loading map...</p>
+      <div
+        className="flex items-center justify-center rounded-2xl bg-stone-100 px-4 text-center"
+        style={{ height: `${MAP_HEIGHT}px`, width: "100%" }}
+      >
+        <p className="text-sm text-slate-500">Map unavailable: {mapError}</p>
       </div>
     );
   }
 
-  const { MapContainer, TileLayer, Polyline, CircleMarker, Tooltip } = ReactLeaflet;
-
-  const stopsById = Object.fromEntries(STOPS.map((stop) => [stop.id, stop]));
-
-  // Road/ferry route coordinates (LAX → Vancouver via coast and Victoria)
-  const coastalRoute = STOPS.slice(0, 25).map((stop) => stop.coords);
-
-  // Generate smooth arc points between two coordinates
-  const generateArc = (start, end, numPoints = 20, arcHeight = 0.15) => {
-    const points = [];
-    for (let i = 0; i <= numPoints; i++) {
-      const t = i / numPoints;
-      const lat = start[0] + (end[0] - start[0]) * t;
-      const lng = start[1] + (end[1] - start[1]) * t;
-      // Add arc using sine curve - peaks at midpoint
-      const arcOffset = Math.sin(t * Math.PI) * arcHeight * Math.abs(end[1] - start[1]);
-      points.push([lat + arcOffset, lng]);
-    }
-    return points;
-  };
-
-  // Flight route Vancouver → Toronto → Boston with smooth arcs
-  const flightVancouverBoston = [
-    ...generateArc(stopsById.vancouver.coords, stopsById.toronto.coords, 25, 0.12),
-    ...generateArc(stopsById.toronto.coords, stopsById.boston.coords, 15, 0.08),
-  ];
-
-  const flightBostonLax = generateArc(stopsById.boston.coords, stopsById["lax-return"].coords, 30, 0.10);
-
   return (
-    <MapContainer
-      center={MAP_CENTER}
-      zoom={4}
-      style={{ height: "420px", width: "100%" }}
-      scrollWheelZoom={false}
-      className="z-0 rounded-2xl"
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-
-      {/* Road/ferry route - LAX to Vancouver (blue dashed) */}
-      <Polyline
-        positions={coastalRoute}
-        pathOptions={{
-          color: "#3B82F6",
-          weight: 4,
-          dashArray: "10, 6",
-          opacity: 0.8,
-        }}
-      />
-
-      {/* Flight route - Vancouver to Boston via Toronto (green) */}
-      <Polyline
-        positions={flightVancouverBoston}
-        pathOptions={{
-          color: "#10B981",
-          weight: 3,
-          opacity: 0.8,
-        }}
-      />
-
-      {/* Flight route - Boston to LAX (orange) */}
-      <Polyline
-        positions={flightBostonLax}
-        pathOptions={{
-          color: "#F59E0B",
-          weight: 3,
-          opacity: 0.8,
-        }}
-      />
-
-      {/* Stop markers */}
-      {STOPS.slice(0, -1).map((stop, index) => (
-        <CircleMarker
-          key={stop.id}
-          center={stop.coords}
-          radius={index === 0 ? 8 : 5}
-          pathOptions={{
-            color: "#1F2937",
-            weight: index === 0 ? 2 : 1.5,
-            fillColor: "white",
-            fillOpacity: 1,
-          }}
-        >
-          <Tooltip direction="top" offset={[0, -10]} className="city-label">
-            {index + 1}. {stop.label}
-          </Tooltip>
-        </CircleMarker>
-      ))}
-    </MapContainer>
+    <div className="relative" style={{ height: `${MAP_HEIGHT}px`, width: "100%" }}>
+      {!mapReady && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-stone-100">
+          <p className="text-slate-500">Loading map...</p>
+        </div>
+      )}
+      <div ref={containerRef} className="h-full w-full rounded-2xl" />
+    </div>
   );
 }
 
 function Legend() {
   return (
     <div className="absolute bottom-4 right-4 z-[1000] rounded-2xl border border-stone-200 bg-white/95 p-3 shadow-md backdrop-blur">
-      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Routes</p>
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <div className="h-0.5 w-6 bg-blue-500" style={{ backgroundImage: "repeating-linear-gradient(90deg, #3B82F6 0, #3B82F6 6px, transparent 6px, transparent 10px)" }}></div>
-          <span className="text-xs text-slate-600">LAX → Vancouver</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-0.5 w-6 bg-emerald-500"></div>
-          <span className="text-xs text-slate-600">VAN → YYZ → BOS</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-0.5 w-6 bg-amber-500"></div>
-          <span className="text-xs text-slate-600">BOS → LAX (return)</span>
-        </div>
+      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-slate-500">Route</p>
+      <div className="flex items-center gap-2">
+        <div
+          className="h-0.5 w-6 bg-blue-500"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(90deg, #3B82F6 0, #3B82F6 6px, transparent 6px, transparent 10px)",
+          }}
+        />
+        <span className="text-xs text-slate-600">LAX → Seattle</span>
       </div>
     </div>
   );
@@ -199,17 +233,17 @@ export default function TripMap() {
     <div className="mb-8 rounded-[18px] border border-stone-200 bg-white p-4 shadow-sm sm:p-6">
       <div className="mb-4 flex flex-col gap-4 sm:flex-row sm:items-start">
         <div className="flex h-16 w-20 shrink-0 flex-col items-center justify-center rounded-lg bg-stone-100 text-center shadow-sm sm:h-[72px] sm:w-[88px]">
-          <span className="text-sm font-medium leading-none text-slate-600">Route</span>
+          <span className="text-sm font-medium leading-none text-slate-600">Stops</span>
           <span className="mt-1 text-xl font-bold leading-none text-slate-950">
-            {STOPS.length - 1}
+            {STOPS.length}
           </span>
         </div>
         <div>
           <h2 className="text-xl font-bold leading-snug text-slate-950 sm:text-2xl">
-            West Coast → Canada → East Coast → LAX
+            Los Angeles → Seattle
           </h2>
           <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
-            Campervan coast route, Canada leg, and cross-country flights
+            Pacific coast campervan route
           </p>
         </div>
       </div>
