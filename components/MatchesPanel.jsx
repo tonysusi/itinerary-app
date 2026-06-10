@@ -6,7 +6,7 @@ export default function MatchesPanel({ games, dateLabel }) {
     return (
       <aside className="rounded-xl border border-slate-200 bg-slate-50/50 p-4 lg:self-start">
       <div className="mb-4 flex justify-center border-b border-slate-200 pb-3">
-        <FIFALogo className="opacity-60 max-h-12 w-auto" />
+        <FIFALogo className="h-12 w-auto object-contain opacity-60" />
       </div>
         {/* <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
           World Cup Matches
@@ -20,7 +20,7 @@ export default function MatchesPanel({ games, dateLabel }) {
   return (
     <aside className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm lg:self-start">
       <div className="mb-4 flex justify-center border-b border-slate-200 pb-3">
-        <FIFALogo className="max-h-12 w-auto" />
+        <FIFALogo className="h-12 w-auto object-contain" />
       </div>
       {/* <h3 className="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-500">
         World Cup Matches

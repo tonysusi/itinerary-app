@@ -1,44 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import LinkedText from "./LinkedText";
 import WeatherBadge from "./WeatherBadge";
-
-function parseDateLabel(dateLabel) {
-  if (!dateLabel) return null;
-  // Expected format: "Thu 11 Jun 2026" or similar
-  const match = dateLabel.match(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i);
-  if (!match) return null;
-  return {
-    dayAbbr: match[1],
-    date: parseInt(match[2], 10),
-    month: match[3],
-  };
-}
-
-const MONTH_INDEX = {
-  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
-  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11,
-};
-
-function isCurrentDay(dateLabel) {
-  const match = dateLabel?.match(
-    /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{4})/i
-  );
-  if (!match) return false;
-
-  const monthKey = match[3].charAt(0).toUpperCase() + match[3].slice(1).toLowerCase();
-  const month = MONTH_INDEX[monthKey];
-  if (month === undefined) return false;
-
-  const dayDate = new Date(parseInt(match[4], 10), month, parseInt(match[2], 10));
-  const today = new Date();
-
-  return (
-    dayDate.getFullYear() === today.getFullYear() &&
-    dayDate.getMonth() === today.getMonth() &&
-    dayDate.getDate() === today.getDate()
-  );
-}
+import { isCurrentDay, parseDateLabel } from "@/lib/day-utils";
 
 const BULLET_COLORS = [
   "bg-slate-600",
@@ -126,7 +90,16 @@ function ChevronIcon({ expanded }) {
   );
 }
 
-export default function DayCard({ day, weather, activity, flight, accommodation, location }) {
+export default function DayCard({
+  day,
+  weather,
+  activity,
+  flight,
+  accommodation,
+  location,
+  expanded,
+  onExpandedChange,
+}) {
   const calendarData = parseDateLabel(day.dateLabel);
   const activityItems = day.activityItems?.length ? day.activityItems : splitItems(activity);
   const flightItems = day.flightItems?.length ? day.flightItems : splitItems(flight);
@@ -137,11 +110,9 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
   const title = getDayTitle(day, location, activity, flight);
   const transportLabel = getTransportLabel(flightItems);
   const accommodationSummary = accommodationItems[0] || cleanText(accommodation);
-  const [expanded, setExpanded] = useState(() => isCurrentDay(day.dateLabel));
-  const subtitleParts = [
+  const summaryParts = [
     flightItems[0],
     !flightItems.length && firstLine(activity),
-    accommodationItems[0],
     weather && `${weather.temp}°C ${weather.condition}`,
   ].filter(Boolean);
   const callout = accommodationItems[0] || firstLine(activity) || location;
@@ -158,7 +129,7 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
         <button
           type="button"
           className="flex w-full flex-col gap-4 text-left sm:flex-row sm:gap-5"
-          onClick={() => setExpanded((value) => !value)}
+          onClick={() => onExpandedChange?.(!expanded)}
           aria-expanded={expanded}
         >
           <DatePill calendarData={calendarData} dayNumber={day.day} />
@@ -171,7 +142,7 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
                 </h2>
                 {!expanded && accommodationSummary && (
                   <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
-                    {accommodationSummary}
+                    <LinkedText text={accommodationSummary} />
                   </p>
                 )}
                 {weather && (
@@ -187,9 +158,20 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
 
         {expanded && (
           <div className="mt-4 border-t border-stone-100 pt-4 sm:pl-[calc(5.5rem+1.25rem)]">
-            {subtitleParts.length > 0 && (
+            {(summaryParts.length > 0 || accommodationSummary) && (
               <p className="text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
-                {subtitleParts.join(" · ")}
+                {summaryParts.map((part, index) => (
+                  <span key={`${part}-${index}`}>
+                    {index > 0 && " · "}
+                    {part}
+                  </span>
+                ))}
+                {accommodationSummary && (
+                  <span>
+                    {summaryParts.length > 0 && " · "}
+                    <LinkedText text={accommodationSummary} />
+                  </span>
+                )}
               </p>
             )}
 
@@ -205,7 +187,11 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
 
             {callout && (
               <div className="border-l-4 border-slate-300 bg-stone-100/80 px-4 py-3 text-sm leading-relaxed text-slate-700 sm:text-base">
-                {callout}
+                {accommodationItems[0] ? (
+                  <LinkedText text={callout} />
+                ) : (
+                  callout
+                )}
               </div>
             )}
           </div>
