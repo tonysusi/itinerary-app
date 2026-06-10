@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import DayCard from "@/components/DayCard";
+import FIFALogo from "@/components/FIFALogo";
 import MatchesPanel from "@/components/MatchesPanel";
 import TimeDisplay from "@/components/TimeDisplay";
 import TripMap from "@/components/TripMap";
@@ -10,6 +11,7 @@ export default function Home() {
   const [itinerary, setItinerary] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showMatches, setShowMatches] = useState(false);
 
   useEffect(() => {
     fetch("/api/itinerary")
@@ -54,13 +56,33 @@ export default function Home() {
 
       <TripMap />
 
+      <div className="mb-6 flex items-center justify-end">
+        <button
+          type="button"
+          onClick={() => setShowMatches((value) => !value)}
+          title={showMatches ? "Hide World Cup matches" : "Show World Cup matches"}
+          aria-pressed={showMatches}
+          aria-label={showMatches ? "Hide World Cup matches" : "Show World Cup matches"}
+          className={`rounded-lg border bg-white p-2 shadow-sm transition hover:shadow ${
+            showMatches
+              ? "border-stone-200 hover:border-stone-300"
+              : "border-stone-200 opacity-75 hover:border-stone-300 hover:opacity-100"
+          }`}
+        >
+          <FIFALogo
+            className="h-8 w-auto"
+            grayscale={!showMatches}
+          />
+        </button>
+      </div>
+
       <section className="space-y-6">
         {itinerary.days.map((day) => (
           <div
             key={day.day}
             className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6"
           >
-            <div className="w-full lg:w-2/3 min-w-0">
+            <div className={`w-full min-w-0 ${showMatches ? "lg:w-2/3" : ""}`}>
               <DayCard
                 day={day}
                 weather={day.weather}
@@ -70,9 +92,11 @@ export default function Home() {
                 location={day.location}
               />
             </div>
-            <div className="w-full lg:w-1/3">
-              <MatchesPanel games={day.games} dateLabel={day.dateLabel} />
-            </div>
+            {showMatches && (
+              <div className="w-full lg:w-1/3">
+                <MatchesPanel games={day.games} dateLabel={day.dateLabel} />
+              </div>
+            )}
           </div>
         ))}
       </section>

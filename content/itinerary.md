@@ -96,38 +96,43 @@ startDate: "2026-06-11"
 
 ## Mon 15 Jun 2026
 
-- **Location:** San Francisco → Bolinas meadow camp
+- **Location:** San Francisco → Beach Chalet → Bolinas
 - **Activity:**
+  - Van at Oracle Park · Muni/Uber to explore · Beach Chalet sunset dinner · Bolinas
   - Park van at Oracle Park Lot A / Pier 48 or Mission Bay Blvd — $30–$50 (higher on game days)
   - Fisherman's Wharf → Pier 39 sea lions → crab bread bowls
-  - Alcatraz Island ferry + audio tour — BOOK AHEAD — 2.5 hrs
   - Chinatown — Dragon's Gate, Ross Alley, bubble tea
-  - Golden Gate Bridge sunset walk or cycle
-  - Drive van to Bolinas — ~1 hr north — meadow campsite
+  - Golden Gate Bridge — walk or cycle across
+  - Pick up van from Oracle Park — drive through Golden Gate Park
+  - Golden Gate Park — Dutch Windmill, Bison paddock (drive-through stops on the way west)
+  - Beach Chalet — dinner at the 1925 oceanfront brewery overlooking the Pacific. House-brewed craft beers, seafood, stunning WPA frescoes on the ground floor. 1000 Great Highway, at the western edge of Golden Gate Park
+  - Drive to Bolinas — ~45 min north — meadow campsite
 - **Accommodation:** Sleeping: 77 Olema Bolinas Rd, Bolinas, CA 94924 — Hipcamp meadow campsite · Confirm campervan size restrictions
 
 ## Tue 16 Jun 2026
 
 - **Location:** Bolinas → Point Reyes → Redwoods → Crescent City
 - **Activity:**
-  - Morning walk on Bolinas Beach — wild, locals-only feel
-  - Point Reyes National Seashore — ~15 min — Limantour Beach or Tomales Point
-  - Hwy 101 north — Avenue of the Giants redwood detour
+  - ~3 hrs north
+  - Bolinas Beach walk
+  - Point Reyes · Limantour Beach or Tomales Point
+  - Avenue of the Giants
   - Confusion Hill — inspiration for Gravity Falls
-  - Prairie Creek Redwoods — Fern Canyon hike (easy 1 hr loop, Jurassic Park vibes)
+  - Fern Canyon hike (easy 1 hr loop)
   - Arrive Crescent City — walk South Beach from the campsite, watch the harbour sunset
 - **Accommodation:** ✓ Accommodation booked: Redwood Harbor Village · 159 Starfish Way, Crescent City, CA · Back-in full hookup site · 30A/50A electric, water & sewer · Direct access to South Beach
 
 ## Wed 17 Jun 2026
 
-- **Location:** Jedediah Smith → Cannon Beach → Beverly Beach
+- **Location:** Jedediah Smith → Boardman Corridor → Sea Lion Caves → Beverly Beach
 - **Activity:**
-  - Morning: Jedediah Smith Redwoods — Stout Grove trail (easy 1.5 mi loop, stunning old-growth, 5 min from campsite)
-  - Continue north — Cannon Beach quick stop for Haystack Rock — ~2 hrs north
-  - Arrive Beverly Beach State Park — ~1.5 hrs south of Cannon Beach — check in, explore the beach
-  - Surf or body surf at Beverly Beach — miles of wild Oregon coast right on your doorstep
-  - Beverly Beach has 53 full-hookup sites with electric, water & sewer — well suited for the campervan. The beach is a short walkway under the highway bridge from the campground.
-- **Accommodation:** ✓ Accommodation booked: Beverly Beach State Park, OR · 7 miles north of Newport · Full hookup RV site · Hot showers, dump station
+  - Dramatic coast + quirky cave · ~5 hrs driving with stops
+  - Jedediah Smith Redwoods — Stout Grove trail (easy 1.5 mi, stunning old-growth, 5 min from campsite)
+  - Samuel H. Boardman Scenic Corridor — ~30 min north — 12 miles of Oregon's most dramatic coastline. Stop at Natural Bridges (sea arches framing the Pacific) and Arch Rock viewpoint. Allow 1–2 hrs
+  - Continue north on US-101 through Gold Beach, Bandon, Coos Bay — dramatic coast the whole way
+  - Sea Lion Caves — 38 mi south of Beverly Beach — America's largest sea cave! Elevator 200 ft down into a cavern as tall as a 12-storey building, filled with hundreds of Steller sea lions. ~$14–16/adult. RV parking available. Allow 1 hr
+  - Arrive Beverly Beach State Park — check in, surf or body surf. Miles of wild Oregon coast
+- **Accommodation:** ✓ Accommodation booked: Beverly Beach State Park, OR · 7 miles north of Newport · Full hookup RV site · Hot showers, dump station · The beach is a short walkway under the highway bridge from the campground
 
 ## Thu 18 Jun 2026
 
