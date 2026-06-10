@@ -2,7 +2,8 @@
 
 import LinkedText from "./LinkedText";
 import WeatherBadge from "./WeatherBadge";
-import { isCurrentDay, parseDateLabel } from "@/lib/day-utils";
+import InstagramPhotos from "./InstagramPhotos";
+import { isCurrentDay, parseDateLabel, extractLocationsFromDay } from "@/lib/day-utils";
 
 const BULLET_COLORS = [
   "bg-slate-600",
@@ -205,6 +206,15 @@ export default function DayCard({
             {flightItems.join(" · ")}
           </p>
         </aside>
+      )}
+
+      {expanded && (
+        <div className="rounded-[18px] border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-6">
+          <InstagramPhotos
+            locations={extractLocationsFromDay(location)}
+            dateLabel={day.dateLabel}
+          />
+        </div>
       )}
     </div>
   );
