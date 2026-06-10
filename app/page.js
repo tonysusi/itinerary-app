@@ -1,15 +1,55 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import DayCard from "@/components/DayCard";
 import MatchesPanel from "@/components/MatchesPanel";
+import MatchesToggle from "@/components/MatchesToggle";
+import StickyDayHeader from "@/components/StickyDayHeader";
 import TimeDisplay from "@/components/TimeDisplay";
+import TimezoneFooter from "@/components/TimezoneFooter";
 import TripMap from "@/components/TripMap";
+import { useActiveDayInView } from "@/hooks/useActiveDayInView";
+import { isCurrentDay } from "@/lib/day-utils";
+
+function buildInitialExpandedDays(days) {
+  const initial = new Set();
+  const currentDay = days.find((day) => isCurrentDay(day.dateLabel));
+  if (currentDay) initial.add(currentDay.day);
+  return initial;
+}
 
 export default function Home() {
   const [itinerary, setItinerary] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showMatches, setShowMatches] = useState(false);
+  const [expandedDays, setExpandedDays] = useState(new Set());
+  const [showTimezones, setShowTimezones] = useState(false);
+  const days = itinerary?.days ?? [];
+  const { sectionRef, registerDayRef, activeDay, stickyVisible } = useActiveDayInView(days);
+
+  useEffect(() => {
+    if (itinerary?.days?.length) {
+      setExpandedDays(buildInitialExpandedDays(itinerary.days));
+    }
+  }, [itinerary]);
+
+  const toggleDayExpanded = (dayNumber, shouldExpand) => {
+    setExpandedDays((previous) => {
+      const next = new Set(previous);
+      if (shouldExpand) next.add(dayNumber);
+      else next.delete(dayNumber);
+      return next;
+    });
+  };
+
+  const handleStickyNavigate = () => {
+    if (!activeDay) return;
+
+    const element = document.getElementById(`day-${activeDay.day}`);
+    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    toggleDayExpanded(activeDay.day, true);
+  };
 
   useEffect(() => {
     fetch("/api/itinerary")
@@ -54,13 +94,42 @@ export default function Home() {
 
       <TripMap />
 
-      <section className="space-y-6">
-        {itinerary.days.map((day) => (
+      <StickyDayHeader
+        dateLabel={activeDay?.dateLabel}
+        visible={stickyVisible}
+        activeDay={activeDay}
+        allDays={days}
+        onDayClick={(dayNumber) => {
+          const element = document.getElementById(`day-${dayNumber}`);
+          element?.scrollIntoView({ behavior: "smooth", block: "start" });
+          toggleDayExpanded(dayNumber, true);
+        }}
+        showMatches={showMatches}
+        onToggleMatches={() => setShowMatches((value) => !value)}
+        showTz={showTimezones}
+        onToggleTz={() => setShowTimezones((value) => !value)}
+      />
+
+      <TimezoneFooter visible={stickyVisible && showTimezones} />
+
+      {!stickyVisible && (
+        <div className="mb-6 flex items-center justify-end">
+          <MatchesToggle
+            showMatches={showMatches}
+            onToggle={() => setShowMatches((value) => !value)}
+          />
+        </div>
+      )}
+
+      <section ref={sectionRef} className="space-y-6">
+        {days.map((day) => (
           <div
             key={day.day}
-            className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6"
+            id={`day-${day.day}`}
+            ref={(element) => registerDayRef(day.day, element)}
+            className="scroll-mt-16 flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6"
           >
-            <div className="w-full lg:w-2/3 min-w-0">
+            <div className={`w-full min-w-0 ${showMatches ? "lg:w-2/3" : ""}`}>
               <DayCard
                 day={day}
                 weather={day.weather}
@@ -68,11 +137,17 @@ export default function Home() {
                 flight={day.flight}
                 accommodation={day.accommodation}
                 location={day.location}
+                expanded={expandedDays.has(day.day)}
+                onExpandedChange={(shouldExpand) =>
+                  toggleDayExpanded(day.day, shouldExpand)
+                }
               />
             </div>
-            <div className="w-full lg:w-1/3">
-              <MatchesPanel games={day.games} dateLabel={day.dateLabel} />
-            </div>
+            {showMatches && (
+              <div className="w-full lg:w-1/3">
+                <MatchesPanel games={day.games} dateLabel={day.dateLabel} />
+              </div>
+            )}
           </div>
         ))}
       </section>

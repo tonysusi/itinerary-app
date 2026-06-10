@@ -1,16 +1,8 @@
-import WeatherBadge from "./WeatherBadge";
+"use client";
 
-function parseDateLabel(dateLabel) {
-  if (!dateLabel) return null;
-  // Expected format: "Thu 11 Jun 2026" or similar
-  const match = dateLabel.match(/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+(\d{1,2})\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/i);
-  if (!match) return null;
-  return {
-    dayAbbr: match[1],
-    date: parseInt(match[2], 10),
-    month: match[3],
-  };
-}
+import LinkedText from "./LinkedText";
+import WeatherBadge from "./WeatherBadge";
+import { isCurrentDay, parseDateLabel } from "@/lib/day-utils";
 
 const BULLET_COLORS = [
   "bg-slate-600",
@@ -52,12 +44,15 @@ function getTransportLabel(items) {
 
 function DatePill({ calendarData, dayNumber }) {
   return (
-    <div className="flex h-16 w-20 shrink-0 flex-col items-center justify-center rounded-lg bg-stone-100 text-center shadow-sm sm:h-[72px] sm:w-[88px]">
-      <span className="text-sm font-medium leading-none text-slate-600">
-        {calendarData ? `${calendarData.month} ${calendarData.date}` : "Day"}
+    <div className="flex h-[4.5rem] w-20 shrink-0 flex-col items-center justify-center rounded-lg bg-stone-100 px-1 text-center shadow-sm sm:h-20 sm:w-[88px]">
+      <span className="text-base font-bold uppercase leading-none tracking-wide text-slate-950 sm:text-lg">
+        {calendarData ? calendarData.dayAbbr.toUpperCase() : "—"}
       </span>
-      <span className="mt-1 text-xl font-bold leading-none text-slate-950">
-        Day {Math.max(dayNumber - 1, 0)}
+      <span className="mt-1 text-sm font-medium leading-none text-slate-600">
+        {calendarData ? `${calendarData.month} ${calendarData.date}` : "—"}
+      </span>
+      <span className="mt-1 text-xs font-normal leading-none text-slate-500">
+        Day {dayNumber}
       </span>
     </div>
   );
@@ -76,7 +71,35 @@ function TimelineItem({ children, index }) {
   );
 }
 
-export default function DayCard({ day, weather, activity, flight, accommodation, location }) {
+function ChevronIcon({ expanded }) {
+  return (
+    <svg
+      className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 ${
+        expanded ? "rotate-180" : ""
+      }`}
+      viewBox="0 0 20 20"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        fillRule="evenodd"
+        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+export default function DayCard({
+  day,
+  weather,
+  activity,
+  flight,
+  accommodation,
+  location,
+  expanded,
+  onExpandedChange,
+}) {
   const calendarData = parseDateLabel(day.dateLabel);
   const activityItems = day.activityItems?.length ? day.activityItems : splitItems(activity);
   const flightItems = day.flightItems?.length ? day.flightItems : splitItems(flight);
@@ -86,36 +109,71 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
   const timelineItems = activityItems;
   const title = getDayTitle(day, location, activity, flight);
   const transportLabel = getTransportLabel(flightItems);
-  const subtitleParts = [
+  const accommodationSummary = accommodationItems[0] || cleanText(accommodation);
+  const summaryParts = [
     flightItems[0],
     !flightItems.length && firstLine(activity),
-    accommodationItems[0],
     weather && `${weather.temp}°C ${weather.condition}`,
   ].filter(Boolean);
   const callout = accommodationItems[0] || firstLine(activity) || location;
 
   return (
     <div className="space-y-3">
-      <article className="rounded-[18px] border border-stone-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-6">
-        <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
+      <article
+        className={`rounded-[18px] border bg-white p-4 shadow-sm transition-shadow sm:p-6 ${
+          expanded
+            ? "border-stone-200 hover:shadow-md"
+            : "border-stone-200 hover:border-stone-300"
+        } ${isCurrentDay(day.dateLabel) ? "ring-2 ring-sky-200 ring-offset-2" : ""}`}
+      >
+        <button
+          type="button"
+          className="flex w-full flex-col gap-4 text-left sm:flex-row sm:gap-5"
+          onClick={() => onExpandedChange?.(!expanded)}
+          aria-expanded={expanded}
+        >
           <DatePill calendarData={calendarData} dayNumber={day.day} />
 
           <div className="min-w-0 flex-1">
-            <header className="pb-3">
-              <h2 className="text-xl font-bold leading-snug text-slate-950 sm:text-2xl">
-                {title}
-              </h2>
-              {subtitleParts.length > 0 && (
-                <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
-                  {subtitleParts.join(" · ")}
-                </p>
-              )}
-              {weather && (
-                <div className="mt-3">
-                  <WeatherBadge weather={weather} />
-                </div>
-              )}
+            <header className="flex items-start justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <h2 className="text-xl font-bold leading-snug text-slate-950 sm:text-2xl">
+                  {title}
+                </h2>
+                {!expanded && accommodationSummary && (
+                  <p className="mt-1 text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
+                    <LinkedText text={accommodationSummary} />
+                  </p>
+                )}
+                {weather && (
+                  <div className="mt-3">
+                    <WeatherBadge weather={weather} />
+                  </div>
+                )}
+              </div>
+              <ChevronIcon expanded={expanded} />
             </header>
+          </div>
+        </button>
+
+        {expanded && (
+          <div className="mt-4 border-t border-stone-100 pt-4 sm:pl-[calc(5.5rem+1.25rem)]">
+            {(summaryParts.length > 0 || accommodationSummary) && (
+              <p className="text-sm font-medium leading-relaxed text-slate-600 sm:text-base">
+                {summaryParts.map((part, index) => (
+                  <span key={`${part}-${index}`}>
+                    {index > 0 && " · "}
+                    {part}
+                  </span>
+                ))}
+                {accommodationSummary && (
+                  <span>
+                    {summaryParts.length > 0 && " · "}
+                    <LinkedText text={accommodationSummary} />
+                  </span>
+                )}
+              </p>
+            )}
 
             {timelineItems.length > 0 && (
               <ul className="space-y-2.5">
@@ -128,15 +186,19 @@ export default function DayCard({ day, weather, activity, flight, accommodation,
             )}
 
             {callout && (
-              <div className="mt-4 border-l-4 border-slate-300 bg-stone-100/80 px-4 py-3 text-sm leading-relaxed text-slate-700 sm:text-base">
-                {callout}
+              <div className="border-l-4 border-slate-300 bg-stone-100/80 px-4 py-3 text-sm leading-relaxed text-slate-700 sm:text-base">
+                {accommodationItems[0] ? (
+                  <LinkedText text={callout} />
+                ) : (
+                  callout
+                )}
               </div>
             )}
           </div>
-        </div>
+        )}
       </article>
 
-      {flightItems.length > 0 && flight !== "—" && (
+      {expanded && flightItems.length > 0 && flight !== "—" && (
         <aside className="rounded-[18px] border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-6">
           <p className="text-base font-bold text-slate-950">{transportLabel}</p>
           <p className="mt-1 text-sm leading-relaxed text-slate-700">
