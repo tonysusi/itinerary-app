@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
  */
 
 const MAP_HEIGHT = 420;
+const MAP_HEIGHT_MOBILE = "40vh";
 const MAP_BEARING = 90;
 const MAP_STYLE = "https://tiles.openfreemap.org/styles/liberty";
 
@@ -215,7 +216,7 @@ function MapContent() {
     return (
       <div
         className="flex items-center justify-center rounded-2xl bg-stone-100 px-4 text-center"
-        style={{ height: `${MAP_HEIGHT}px`, width: "100%" }}
+        style={{ height: `clamp(168px, 40vh, ${MAP_HEIGHT}px)`, width: "100%" }}
       >
         <p className="text-sm text-slate-500">Map unavailable: {mapError}</p>
       </div>
@@ -223,7 +224,7 @@ function MapContent() {
   }
 
   return (
-    <div className="relative" style={{ height: `${MAP_HEIGHT}px`, width: "100%" }}>
+    <div className="relative" style={{ height: `clamp(168px, 40vh, ${MAP_HEIGHT}px)`, width: "100%" }}>
       {!mapReady && (
         <div className="absolute inset-0 z-10 flex items-center justify-center rounded-2xl bg-stone-100">
           <p className="text-slate-500">Loading map...</p>

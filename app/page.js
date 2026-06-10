@@ -89,7 +89,9 @@ export default function Home() {
           {itinerary.trip}
         </h1>
         <p className="mb-4 text-slate-600">{itinerary.destination}</p>
-        <TimeDisplay />
+        <div className="hidden sm:block">
+          <TimeDisplay />
+        </div>
       </header>
 
       <TripMap />
