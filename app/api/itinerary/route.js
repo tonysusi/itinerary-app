@@ -3,6 +3,10 @@ import { getMockWeatherSeeded } from "@/lib/weather";
 import { getGamesForDate } from "@/lib/worldcup-schedule";
 
 export async function GET() {
+  if (process.env.PLANNING_TRIP === "true") {
+    return Response.json({ error: "Planning next trip" }, { status: 404 });
+  }
+
   try {
     const itinerary = parseItinerary();
 
