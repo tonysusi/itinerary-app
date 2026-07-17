@@ -206,15 +206,6 @@ export default function DayCard({
           </p>
         </aside>
       )}
-
-      {expanded && (
-        <div className="rounded-[18px] border border-stone-200 bg-white px-4 py-4 shadow-sm sm:px-6">
-          <InstagramPhotos
-            locations={extractLocationsFromDay(location)}
-            dateLabel={day.dateLabel}
-          />
-        </div>
-      )}
     </div>
   );
 }
