@@ -2,7 +2,6 @@
 
 import LinkedText from "./LinkedText";
 import WeatherBadge from "./WeatherBadge";
-import InstagramPhotos from "./InstagramPhotos";
 import { isCurrentDay, parseDateLabel, extractLocationsFromDay } from "@/lib/day-utils";
 
 const BULLET_COLORS = [
