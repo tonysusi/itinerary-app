@@ -13,8 +13,6 @@ export function useActiveDayInView(days) {
   useEffect(() => {
     if (!days.length) return;
 
-    setActiveDay(days[0]);
-
     const updateActiveDay = () => {
       const section = sectionRef.current;
       if (!section) return;

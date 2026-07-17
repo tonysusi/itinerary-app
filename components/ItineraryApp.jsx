@@ -28,12 +28,6 @@ export default function ItineraryApp() {
   const days = itinerary?.days ?? [];
   const { sectionRef, registerDayRef, activeDay, stickyVisible } = useActiveDayInView(days);
 
-  useEffect(() => {
-    if (itinerary?.days?.length) {
-      setExpandedDays(buildInitialExpandedDays(itinerary.days));
-    }
-  }, [itinerary]);
-
   const toggleDayExpanded = (dayNumber, shouldExpand) => {
     setExpandedDays((previous) => {
       const next = new Set(previous);
@@ -49,7 +43,12 @@ export default function ItineraryApp() {
         if (!res.ok) throw new Error("Failed to load itinerary");
         return res.json();
       })
-      .then(setItinerary)
+      .then((data) => {
+        setItinerary(data);
+        if (data?.days?.length) {
+          setExpandedDays(buildInitialExpandedDays(data.days));
+        }
+      })
       .catch(setError)
       .finally(() => setLoading(false));
   }, []);
